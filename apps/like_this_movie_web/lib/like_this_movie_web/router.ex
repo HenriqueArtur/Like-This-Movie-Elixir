@@ -17,11 +17,11 @@ defmodule LikeThisMovieWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", LikeThisMovieWeb do
-    pipe_through :browser
+  # scope "/", LikeThisMovieWeb do
+  #   pipe_through :browser
 
-    get "/", PageController, :home
-  end
+  #   get "/", PageController, :home
+  # end
 
   # Other scopes may use custom stacks.
   # scope "/api", LikeThisMovieWeb do
@@ -52,10 +52,10 @@ defmodule LikeThisMovieWeb.Router do
 
     live_session :redirect_if_user_is_authenticated,
       on_mount: [{LikeThisMovieWeb.UserAuth, :redirect_if_user_is_authenticated}] do
-      live "/users/register", UserRegistrationLive, :new
-      live "/users/log_in", UserLoginLive, :new
-      live "/users/reset_password", UserForgotPasswordLive, :new
-      live "/users/reset_password/:token", UserResetPasswordLive, :edit
+      live "/", UserLoginLive, :new
+      live "/register", UserRegistrationLive, :new
+      live "/reset_password", UserForgotPasswordLive, :new
+      live "/reset_password/:token", UserResetPasswordLive, :edit
     end
 
     post "/users/log_in", UserSessionController, :create
