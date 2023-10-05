@@ -24,7 +24,7 @@ defmodule LikeThisMovieWeb.UserRegistrationLive do
         phx-submit="save"
         phx-change="validate"
         phx-trigger-action={@trigger_submit}
-        action={~p"/?_action=registered"}
+        action={~p"/users/log_in?_action=registered"}
         method="post"
       >
         <.error :if={@check_errors}>
