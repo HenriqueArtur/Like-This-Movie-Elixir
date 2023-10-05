@@ -9,10 +9,10 @@ config :bcrypt_elixir, :log_rounds, 1
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :like_this_movie, LikeThisMovie.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "TheMovie",
+  password: "likeThisMovie",
   hostname: "localhost",
-  database: "like_this_movie_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "likeThisMovie_Test",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 
