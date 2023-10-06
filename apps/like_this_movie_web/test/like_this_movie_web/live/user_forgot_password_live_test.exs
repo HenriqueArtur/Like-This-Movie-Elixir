@@ -21,7 +21,7 @@ defmodule LikeThisMovieWeb.UserForgotPasswordLiveTest do
         conn
         |> log_in_user(user_fixture())
         |> live(~p"/reset_password")
-        |> follow_redirect(conn, ~p"/logged")
+        |> follow_redirect(conn, ~p"/likes")
 
       assert {:ok, _conn} = result
     end

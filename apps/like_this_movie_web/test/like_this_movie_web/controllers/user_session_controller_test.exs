@@ -15,10 +15,10 @@ defmodule LikeThisMovieWeb.UserSessionControllerTest do
         })
 
       assert get_session(conn, :user_token)
-      assert redirected_to(conn) == ~p"/logged"
+      assert redirected_to(conn) == ~p"/likes"
 
       # Now do a logged in request and assert on the menu
-      conn = get(conn, ~p"/logged")
+      conn = get(conn, ~p"/likes")
       response = html_response(conn, 200)
       assert response =~ user.email
       assert response =~ ~p"/users/settings"
@@ -36,7 +36,7 @@ defmodule LikeThisMovieWeb.UserSessionControllerTest do
         })
 
       assert conn.resp_cookies["_like_this_movie_web_user_remember_me"]
-      assert redirected_to(conn) == ~p"/logged"
+      assert redirected_to(conn) == ~p"/likes"
     end
 
     test "logs the user in with return to", %{conn: conn, user: user} do
@@ -65,7 +65,7 @@ defmodule LikeThisMovieWeb.UserSessionControllerTest do
           }
         })
 
-      assert redirected_to(conn) == ~p"/logged"
+      assert redirected_to(conn) == ~p"/likes"
       assert Phoenix.Flash.get(conn.assigns.flash, :info) =~ "Account created successfully"
     end
 

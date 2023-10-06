@@ -1,4 +1,4 @@
-defmodule LikeThisMovieWeb.UserLoggedLive do
+defmodule LikeThisMovieWeb.LikesLive do
   use LikeThisMovieWeb, :live_view
 
   def render(assigns) do

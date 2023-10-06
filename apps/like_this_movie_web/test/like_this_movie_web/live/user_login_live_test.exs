@@ -18,7 +18,7 @@ defmodule LikeThisMovieWeb.UserLoginLiveTest do
         conn
         |> log_in_user(user_fixture())
         |> live(~p"/")
-        |> follow_redirect(conn, "/logged")
+        |> follow_redirect(conn, "/likes")
 
       assert {:ok, _conn} = result
     end
@@ -36,7 +36,7 @@ defmodule LikeThisMovieWeb.UserLoginLiveTest do
 
       conn = submit_form(form, conn)
 
-      assert redirected_to(conn) == ~p"/logged"
+      assert redirected_to(conn) == ~p"/likes"
     end
 
     test "redirects to login page with a flash error if there are no valid credentials", %{

@@ -17,7 +17,7 @@ defmodule LikeThisMovieWeb.UserRegistrationLiveTest do
         conn
         |> log_in_user(user_fixture())
         |> live(~p"/register")
-        |> follow_redirect(conn, "/logged")
+        |> follow_redirect(conn, "/likes")
 
       assert {:ok, _conn} = result
     end
@@ -45,10 +45,10 @@ defmodule LikeThisMovieWeb.UserRegistrationLiveTest do
       render_submit(form)
       conn = follow_trigger_action(form, conn)
 
-      assert redirected_to(conn) == ~p"/logged"
+      assert redirected_to(conn) == ~p"/likes"
 
       # Now do a logged in request and assert on the menu
-      conn = get(conn, "/logged")
+      conn = get(conn, "/likes")
       response = html_response(conn, 200)
       assert response =~ email
       assert response =~ "Settings"
