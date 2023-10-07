@@ -582,7 +582,7 @@ defmodule LikeThisMovieWeb.CoreComponents do
   attr :name, :string, required: true
   attr :class, :string, default: nil
 
-  def icon(%{name: "hero-" <> _} = assigns) do
+  def icon(%{name: "material-" <> _} = assigns) do
     ~H"""
     <span class={[@name, @class]} />
     """

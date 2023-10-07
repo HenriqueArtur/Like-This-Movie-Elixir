@@ -87,6 +87,10 @@ defmodule LikeThisMovieWeb do
       import LikeThisMovieWeb.CoreComponents
       import LikeThisMovieWeb.Gettext
 
+      # Components
+      import LikeThisMovieWeb.Navigate
+      import LikeThisMovieWeb.NavigateButton
+
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
 
