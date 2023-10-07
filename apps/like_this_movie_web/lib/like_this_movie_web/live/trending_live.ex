@@ -1,11 +1,11 @@
-defmodule LikeThisMovieWeb.LikesLive do
+defmodule LikeThisMovieWeb.TrendingLive do
   use LikeThisMovieWeb, :live_view
 
   def render(assigns) do
     ~H"""
     <div class="mx-auto max-w-sm">
       <.header class="text-center">
-        Likes
+        trending
       </.header>
     </div>
     """
