@@ -6,9 +6,9 @@ defmodule LikeThisMovieWeb.NavigateButton do
     ~H"""
     <.link
       navigate={@navigate}
-      class="p-4 mt-2 rounded-md bg-white hover:bg-yellow-500"
+      class="p-4 mt-2 rounded-md bg-white hover:bg-yellow-400 text-black"
     >
-      <.icon name="material-favorite" class="mr-2" />
+      <.icon name={@icon} class="mr-2" />
       <%= @label %>
     </.link>
     """

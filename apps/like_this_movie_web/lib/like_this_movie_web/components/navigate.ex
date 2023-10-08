@@ -12,25 +12,23 @@ defmodule LikeThisMovieWeb.Navigate do
         </header>
         <%= if @current_user != nil do %>
           <div class="flex flex-col">
-            <.navigate_button navigate="/likes" label="Likes"/>
-            <.navigate_button navigate="/trending" label="Trending"/>
+            <.navigate_button navigate="/likes" label="Likes" icon={"material-favorite"} />
+            <.navigate_button navigate="/trending" label="Trending" icon={"material-trending_up"} />
           </div>
-        <% else %>
         <% end %>
       </div>
       <%= if @current_user != nil do %>
         <div class="flex flex-col">
-          <.navigate_button navigate="/users/settings" label="Profile"/>
+          <.navigate_button navigate="/users/settings" label="Profile" icon={"material-account_circle"} />
           <.link
             href="/users/log_out"
             method="delete"
-            class="p-4 mt-2 rounded-md bg-white hover:bg-yellow-500"
+            class="p-4 mt-2 rounded-md bg-white hover:bg-yellow-400"
           >
-            <.icon name="material-favorite" class="mr-2" />
+            <.icon name="material-logout" class="mr-2" />
             Log out
           </.link>
         </div>
-      <% else %>
       <% end %>
     </div>
     """
