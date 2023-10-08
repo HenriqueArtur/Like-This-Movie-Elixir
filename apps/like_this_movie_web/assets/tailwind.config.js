@@ -37,8 +37,8 @@ module.exports = {
       let iconsDir = path.join(__dirname, "./vendor/material");
       let values = {};
       let icons = [
-        ["", "/"],
-        // ["-solid", "/24/solid"],
+        ["", "/outline"],
+        ["-solid", "/solid"],
         // ["-mini", "/20/solid"]
       ];
       icons.forEach(([suffix, dir]) => {
