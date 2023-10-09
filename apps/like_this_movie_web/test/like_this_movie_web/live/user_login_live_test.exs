@@ -8,8 +8,8 @@ defmodule LikeThisMovieWeb.UserLoginLiveTest do
     test "renders log in page", %{conn: conn} do
       {:ok, _lv, html} = live(conn, ~p"/")
 
-      assert html =~ "Log in"
-      assert html =~ "Register"
+      assert html =~ "Sign in to account"
+      assert html =~ "Sign up"
       assert html =~ "Forgot your password?"
     end
 
@@ -67,7 +67,7 @@ defmodule LikeThisMovieWeb.UserLoginLiveTest do
         |> render_click()
         |> follow_redirect(conn, ~p"/register")
 
-      assert login_html =~ "Register"
+      assert login_html =~ "Register for an account"
     end
 
     test "redirects to forgot password page when the Forgot Password button is clicked", %{

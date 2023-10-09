@@ -8,8 +8,8 @@ defmodule LikeThisMovieWeb.UserRegistrationLiveTest do
     test "renders registration page", %{conn: conn} do
       {:ok, _lv, html} = live(conn, ~p"/register")
 
-      assert html =~ "Register"
-      assert html =~ "Log in"
+      assert html =~ "Register for an account"
+      assert html =~ "Sign in"
     end
 
     test "redirects if already logged in", %{conn: conn} do
@@ -50,8 +50,7 @@ defmodule LikeThisMovieWeb.UserRegistrationLiveTest do
       # Now do a logged in request and assert on the menu
       conn = get(conn, "/likes")
       response = html_response(conn, 200)
-      assert response =~ email
-      assert response =~ "Settings"
+      assert response =~ "Profile"
       assert response =~ "Log out"
     end
 
@@ -81,7 +80,7 @@ defmodule LikeThisMovieWeb.UserRegistrationLiveTest do
         |> render_click()
         |> follow_redirect(conn, ~p"/")
 
-      assert login_html =~ "Log in"
+      assert login_html =~ "Sign in to account"
     end
   end
 end
