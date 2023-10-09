@@ -119,8 +119,8 @@ defmodule LikeThisMovieWeb.CoreComponents do
       {@rest}
     >
       <p :if={@title} class="flex items-center gap-1.5 text-sm font-semibold leading-6">
-        <.icon :if={@kind == :info} name="material-info" class="h-4 w-4" />
-        <.icon :if={@kind == :error} name="material-error" class="h-4 w-4" />
+        <.icon :if={@kind == :info} name="material-info" class="h-6 w-6" />
+        <.icon :if={@kind == :error} name="material-error" class="h-6 w-6" />
         <%= @title %>
       </p>
       <p class="mt-2 text-sm leading-5"><%= msg %></p>
