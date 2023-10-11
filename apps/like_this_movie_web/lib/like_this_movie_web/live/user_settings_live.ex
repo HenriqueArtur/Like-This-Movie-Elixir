@@ -99,6 +99,7 @@ defmodule LikeThisMovieWeb.UserSettingsLive do
       |> assign(:email_form, to_form(email_changeset))
       |> assign(:password_form, to_form(password_changeset))
       |> assign(:trigger_submit, false)
+      |> assign(:a_page, :page_profile)
 
     {:ok, socket}
   end
