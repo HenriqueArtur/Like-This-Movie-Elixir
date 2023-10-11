@@ -8,7 +8,7 @@ defmodule LikeThisMovieWeb.NavigateButton do
       navigate={@navigate}
       class={"p-4 mt-2 rounded-md text-black #{a_class?(@is_active)}"}
     >
-      <.icon name={if @is_active, do: @icon <> "-solid", else: @icon} class="mr-2" />
+      <.icon name={@icon} class="mr-2" />
       <%= @label %>
     </.link>
     """

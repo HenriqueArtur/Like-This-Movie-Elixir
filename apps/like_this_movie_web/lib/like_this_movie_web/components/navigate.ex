@@ -11,12 +11,24 @@ defmodule LikeThisMovieWeb.Navigate do
           <h1 class="text-white text-5xl">like this movie</h1>
         </header>
         <div :if={@current_user} class="flex flex-col">
-          <.navigate_button navigate="/likes" label="Likes" icon={"material-favorite"} is_active={@a_page == :page_likes} />
-          <.navigate_button navigate="/trending" label="Trending" icon={"material-trending_up"} is_active={@a_page == :page_trending} />
+          <.navigate_button
+            navigate="/likes"
+            label="Likes"
+            icon={if @a_page == :page_likes, do: "material-favorite-solid", else: "material-favorite"}
+            is_active={@a_page == :page_likes} />
+          <.navigate_button
+            navigate="/trending"
+            label="Trending"
+            icon={if @a_page == :page_trending, do: "material-trending_up-solid", else: "material-trending_up"}
+            is_active={@a_page == :page_trending} />
         </div>
       </div>
       <div :if={@current_user} class="flex flex-col">
-        <.navigate_button navigate="/users/settings" label="Profile" icon={"material-account_circle"} is_active={@a_page == :page_profile} />
+        <.navigate_button
+          navigate="/users/settings"
+          label="Profile"
+          icon={if @a_page == :page_profile, do: "material-account_circle-solid", else: "material-account_circle"}
+          is_active={@a_page == :page_profile} />
         <.link
           href="/users/log_out"
           method="delete"
