@@ -6,10 +6,6 @@ defmodule LikeThisMovieWeb.LikesLive do
     <.content_shell page_title="Likes">
       Likes
     </.content_shell>
-    <%!-- <div class="mx-auto max-w-sm">
-      <.header class="text-center">
-      </.header>
-    </div> --%>
     """
   end
 
