@@ -5,21 +5,23 @@ defmodule LikeThisMovieWeb.UserConfirmationLive do
 
   def render(%{live_action: :edit} = assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
-      <.header class="text-center">Confirm Account</.header>
+    <.center> 
+      <div class="ml-48 max-w-sm">
+        <.header class="text-center">Confirm Account</.header>
 
-      <.simple_form for={@form} id="confirmation_form" phx-submit="confirm_account">
-        <.input field={@form[:token]} type="hidden" />
-        <:actions>
-          <.button phx-disable-with="Confirming..." class="w-full">Confirm my account</.button>
-        </:actions>
-      </.simple_form>
+        <.simple_form for={@form} id="confirmation_form" phx-submit="confirm_account">
+          <.input field={@form[:token]} type="hidden" />
+          <:actions>
+            <.button phx-disable-with="Confirming..." class="w-full">Confirm my account</.button>
+          </:actions>
+        </.simple_form>
 
-      <p class="text-center mt-4">
-        <.link href={~p"/register"}>Register</.link>
-        | <.link href={~p"/"}>Log in</.link>
-      </p>
-    </div>
+        <p class="text-center mt-4">
+          <.link href={~p"/register"}>Register</.link>
+          | <.link href={~p"/"}>Log in</.link>
+        </p>
+      </div>
+    </.center> 
     """
   end
 
