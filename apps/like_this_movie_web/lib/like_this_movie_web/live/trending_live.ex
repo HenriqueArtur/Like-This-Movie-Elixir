@@ -3,11 +3,9 @@ defmodule LikeThisMovieWeb.TrendingLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
-      <.header class="text-center">
-        trending
-      </.header>
-    </div>
+    <.content_shell page_title="Trending">
+      Trending
+    </.content_shell>
     """
   end
 

@@ -3,11 +3,13 @@ defmodule LikeThisMovieWeb.LikesLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
+    <.content_shell page_title="Likes">
+      Likes
+    </.content_shell>
+    <%!-- <div class="mx-auto max-w-sm">
       <.header class="text-center">
-        Likes
       </.header>
-    </div>
+    </div> --%>
     """
   end
 
