@@ -1,6 +1,6 @@
 <div class="flex">
   <.navigate current_user={@current_user} a_page={assigns[:a_page] || nil} />
-  <main class="p-9">
+  <main class="p-9 w-full">
     <.flash_group flash={@flash} />
     <%= @inner_content %>
   </main>
