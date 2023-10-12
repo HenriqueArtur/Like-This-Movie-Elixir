@@ -6,7 +6,7 @@ defmodule LikeThisMovieWeb.UserRegistrationLive do
 
   def render(assigns) do
     ~H"""
-    <.center> 
+    <.center>
       <div class="ml-48 max-w-sm">
         <.header class="text-center">
           Register for an account
@@ -40,7 +40,7 @@ defmodule LikeThisMovieWeb.UserRegistrationLive do
           </:actions>
         </.simple_form>
       </div>
-    </.center> 
+    </.center>
     """
   end
 
