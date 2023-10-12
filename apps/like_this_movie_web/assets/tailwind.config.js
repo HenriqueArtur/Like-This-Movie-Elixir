@@ -59,8 +59,8 @@ module.exports = {
               "background-color": "currentColor",
               "vertical-align": "middle",
               display: "inline-block",
-              width: theme("spacing.7"),
-              height: theme("spacing.7"),
+              width: theme("spacing.6"),
+              height: theme("spacing.6"),
             };
           },
         },
