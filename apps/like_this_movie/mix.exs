@@ -42,7 +42,8 @@ defmodule LikeThisMovie.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.2"},
       {:swoosh, "~> 1.3"},
-      {:finch, "~> 0.13"}
+      {:finch, "~> 0.13"},
+      {:patch, "~> 0.12.0", only: [:test]}
     ]
   end
 
