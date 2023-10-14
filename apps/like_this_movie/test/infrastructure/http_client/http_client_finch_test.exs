@@ -1,5 +1,5 @@
 defmodule LikeThisMovie.HttpClientFinchTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
   use Patch
 
   test "should status code was 200" do
