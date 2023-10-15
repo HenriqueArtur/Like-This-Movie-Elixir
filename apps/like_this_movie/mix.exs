@@ -43,7 +43,8 @@ defmodule LikeThisMovie.MixProject do
       {:jason, "~> 1.2"},
       {:swoosh, "~> 1.3"},
       {:finch, "~> 0.13"},
-      {:patch, "~> 0.12.0", only: [:test]}
+      {:patch, "~> 0.12.0", only: [:test]},
+      {:faker, "~> 0.17", only: :test}
     ]
   end
 
