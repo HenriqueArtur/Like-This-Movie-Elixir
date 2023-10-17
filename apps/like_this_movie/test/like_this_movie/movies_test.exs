@@ -62,4 +62,56 @@ defmodule LikeThisMovie.MoviesTest do
       assert %Ecto.Changeset{} = Movies.change_movie(movie)
     end
   end
+
+  describe "likes" do
+    alias LikeThisMovie.Movies.Like
+
+    import LikeThisMovie.MoviesFixtures
+
+    @invalid_attrs %{}
+
+    test "list_likes/0 returns all likes" do
+      like = like_fixture()
+      assert Movies.list_likes() == [like]
+    end
+
+    test "get_like!/1 returns the like with given id" do
+      like = like_fixture()
+      assert Movies.get_like!(like.id) == like
+    end
+
+    test "create_like/1 with valid data creates a like" do
+      valid_attrs = %{}
+
+      assert {:ok, %Like{} = like} = Movies.create_like(valid_attrs)
+    end
+
+    test "create_like/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Movies.create_like(@invalid_attrs)
+    end
+
+    test "update_like/2 with valid data updates the like" do
+      like = like_fixture()
+      update_attrs = %{}
+
+      assert {:ok, %Like{} = like} = Movies.update_like(like, update_attrs)
+    end
+
+    test "update_like/2 with invalid data returns error changeset" do
+      like = like_fixture()
+      assert {:error, %Ecto.Changeset{}} = Movies.update_like(like, @invalid_attrs)
+      assert like == Movies.get_like!(like.id)
+    end
+
+    test "delete_like/1 deletes the like" do
+      like = like_fixture()
+      assert {:ok, %Like{}} = Movies.delete_like(like)
+      assert_raise Ecto.NoResultsError, fn -> Movies.get_like!(like.id) end
+    end
+
+    test "change_like/1 returns a like changeset" do
+      like = like_fixture()
+      assert %Ecto.Changeset{} = Movies.change_like(like)
+    end
+  end
 end
