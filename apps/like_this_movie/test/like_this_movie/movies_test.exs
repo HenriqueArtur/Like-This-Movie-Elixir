@@ -83,5 +83,24 @@ defmodule LikeThisMovie.MoviesTest do
       %{id: user_id} = user_fixture()
       assert_raise Ecto.InvalidChangesetError, fn -> Movies.add_like({user_id, 0}) end
     end
+
+    test "remove_like/1 with valid user and movie" do
+      %{user_id: user_id, movie_id: movie_id} = like_fixture()
+      assert {:ok, %Like{}} = Movies.remove_like({user_id, movie_id})
+    end
+
+    test "remove_like/1 with invalid user" do
+      %{id: movie_id} = movie_fixture()
+      assert_raise Ecto.NoResultsError, fn -> Movies.remove_like({0, movie_id}) end
+    end
+
+    test "remove_like/1 with invalid movie" do
+      %{id: user_id} = user_fixture()
+      assert_raise Ecto.NoResultsError, fn -> Movies.remove_like({user_id, 0}) end
+    end
+
+    test "remove_like/1 with invalid user and movie" do
+      assert_raise Ecto.NoResultsError, fn -> Movies.remove_like({0, 0}) end
+    end
   end
 end
