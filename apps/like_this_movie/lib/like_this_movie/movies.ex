@@ -113,4 +113,12 @@ defmodule LikeThisMovie.Movies do
       |> Repo.insert!()
     {:ok, like}
   end
+
+  @doc """
+  Deletes a like
+  """
+  def remove_like({user_id, movie_id}) do
+    Repo.get_by!(Like, [user_id: user_id, movie_id: movie_id])
+    |> Repo.delete
+  end
 end
