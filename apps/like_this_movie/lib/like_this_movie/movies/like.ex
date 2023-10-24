@@ -4,8 +4,8 @@ defmodule LikeThisMovie.Movies.Like do
 
   @primary_key false
   schema "likes" do
-    field :user_id, :id
-    field :movie_id, :id
+    field :user_id, :id, primary_key: true
+    field :movie_id, :id, primary_key: true
     timestamps()
   end
 
