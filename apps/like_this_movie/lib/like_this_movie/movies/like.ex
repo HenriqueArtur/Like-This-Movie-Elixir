@@ -2,13 +2,10 @@ defmodule LikeThisMovie.Movies.Like do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias LikeThisMovie.Movies.{Movie}
-  alias LikeThisMovie.Accounts.{User}
-
+  @primary_key false
   schema "likes" do
-    belongs_to :user, User
-    belongs_to :movie, Movie
-
+    field :user_id, :id
+    field :movie_id, :id
     timestamps()
   end
 
@@ -17,5 +14,8 @@ defmodule LikeThisMovie.Movies.Like do
     like
     |> cast(attrs, [:user_id, :movie_id])
     |> validate_required([:user_id, :movie_id])
+    |> foreign_key_constraint(:user_id)
+    |> foreign_key_constraint(:movie_id)
+    |> unique_constraint([:user_id, :movie_id])
   end
 end
