@@ -24,14 +24,9 @@ defmodule LikeThisMovie.MoviesFixtures do
   @doc """
   Generate a like.
   """
-  def like_fixture(attrs \\ %{}) do
-    {:ok, like} =
-      attrs
-      |> Enum.into(%{
-
-      })
-      |> LikeThisMovie.Movies.create_like()
-
+  @spec like_fixture({integer, integer}) :: %LikeThisMovie.Movies.Like{}
+  def like_fixture(attrs) do
+    {:ok, like} = LikeThisMovie.Movies.add_like(attrs)
     like
   end
 end

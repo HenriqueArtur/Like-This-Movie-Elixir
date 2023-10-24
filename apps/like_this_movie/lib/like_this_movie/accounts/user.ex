@@ -1,16 +1,21 @@
 defmodule LikeThisMovie.Accounts.User do
   use Ecto.Schema
+  import Ecto.Query, warn: false
   import Ecto.Changeset
-
-  alias LikeThisMovie.Movies.{Like}
+  alias LikeThisMovie.Movies.{Movie, Like}
 
   schema "users" do
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
-    has_many :likes, Like, foreign_key: :user_id, references: :id
-
+    many_to_many(
+      :likes,
+      Movie,
+      join_through: Like,
+      on_replace: :delete
+      # join_keys: [movie_id: :id, user_id: :id]
+    )
     timestamps()
   end
 
@@ -138,7 +143,7 @@ defmodule LikeThisMovie.Accounts.User do
   If there is no user or the user doesn't have a password, we call
   `Bcrypt.no_user_verify/0` to avoid timing attacks.
   """
-  def valid_password?(%LikeThisMovie.Accounts.User{hashed_password: hashed_password}, password)
+  def valid_password?(%{hashed_password: hashed_password}, password)
       when is_binary(hashed_password) and byte_size(password) > 0 do
     Bcrypt.verify_pass(password, hashed_password)
   end

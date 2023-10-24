@@ -1,5 +1,5 @@
 defmodule LikeThisMovie.MoviesTest do
-  use LikeThisMovie.DataCase
+  use LikeThisMovie.DataCase, async: true
 
   alias LikeThisMovie.Movies
 
@@ -64,54 +64,24 @@ defmodule LikeThisMovie.MoviesTest do
   end
 
   describe "likes" do
-    alias LikeThisMovie.Movies.Like
-
     import LikeThisMovie.MoviesFixtures
+    import LikeThisMovie.AccountsFixtures
+    alias LikeThisMovie.Movies.{Like}
 
-    @invalid_attrs %{}
-
-    test "list_likes/0 returns all likes" do
-      like = like_fixture()
-      assert Movies.list_likes() == [like]
+    test "add_like/1 with valid user and movie" do
+      %{id: user_id} = user_fixture()
+      %{id: movie_id} = movie_fixture()
+      assert {:ok, %Like{}} = Movies.add_like({user_id, movie_id})
     end
 
-    test "get_like!/1 returns the like with given id" do
-      like = like_fixture()
-      assert Movies.get_like!(like.id) == like
+    test "add_like/1 with invalid user" do
+      %{id: movie_id} = movie_fixture()
+      assert_raise Ecto.InvalidChangesetError, fn -> Movies.add_like({0, movie_id}) end
     end
 
-    test "create_like/1 with valid data creates a like" do
-      valid_attrs = %{}
-
-      assert {:ok, %Like{} = like} = Movies.create_like(valid_attrs)
-    end
-
-    test "create_like/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = Movies.create_like(@invalid_attrs)
-    end
-
-    test "update_like/2 with valid data updates the like" do
-      like = like_fixture()
-      update_attrs = %{}
-
-      assert {:ok, %Like{} = like} = Movies.update_like(like, update_attrs)
-    end
-
-    test "update_like/2 with invalid data returns error changeset" do
-      like = like_fixture()
-      assert {:error, %Ecto.Changeset{}} = Movies.update_like(like, @invalid_attrs)
-      assert like == Movies.get_like!(like.id)
-    end
-
-    test "delete_like/1 deletes the like" do
-      like = like_fixture()
-      assert {:ok, %Like{}} = Movies.delete_like(like)
-      assert_raise Ecto.NoResultsError, fn -> Movies.get_like!(like.id) end
-    end
-
-    test "change_like/1 returns a like changeset" do
-      like = like_fixture()
-      assert %Ecto.Changeset{} = Movies.change_like(like)
+    test "add_like/1 with invalid movie" do
+      %{id: user_id} = user_fixture()
+      assert_raise Ecto.InvalidChangesetError, fn -> Movies.add_like({user_id, 0}) end
     end
   end
 end

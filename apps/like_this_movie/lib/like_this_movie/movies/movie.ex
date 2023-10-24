@@ -2,6 +2,7 @@ defmodule LikeThisMovie.Movies.Movie do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias LikeThisMovie.Accounts.{User}
   alias LikeThisMovie.Movies.{Like}
 
   schema "movies" do
@@ -9,8 +10,13 @@ defmodule LikeThisMovie.Movies.Movie do
     field :original_title, :string
     field :backdrop_path, :string
     field :poster_path, :string
-    has_many :likes, Like, foreign_key: :movie_id, references: :id
-
+    many_to_many(
+      :likes,
+      User,
+      join_through: Like,
+      on_replace: :delete
+      # join_keys: [user_id: :id, movie_id: :id]
+    )
     timestamps()
   end
 
