@@ -25,5 +25,9 @@ defmodule LikeThisMovie.TMDB do
   defp extract_results({:ok, %{"results" => results}}), do: results
   defp extract_results({:error, _} = err), do: err
 
+  @spec url_img() :: String.t()
   def url_img, do: @tmdb_url_img
+
+  @spec url_img_from(poster_path :: String.t()) :: String.t()
+  def url_img_from(poster_path), do: @tmdb_url_img <> poster_path
 end
