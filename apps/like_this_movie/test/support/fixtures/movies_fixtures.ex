@@ -26,7 +26,12 @@ defmodule LikeThisMovie.MoviesFixtures do
   @doc """
   Generate a like.
   """
-  @spec like_fixture({integer, integer}) :: %LikeThisMovie.Movies.Like{}
+  @type attrs ::
+      %{ user_id:  integer }
+    | %{ movie_id: integer }
+    | %{ user_id:  integer, movie_id: integer }
+    | %{}
+  @spec like_fixture(attrs) :: %LikeThisMovie.Movies.Like{}
   def like_fixture(attrs \\ %{}) do
     user_id = get_a_user_id(attrs[:user_id] || nil)
     movie_id = get_a_movie_id(attrs[:movie_id] || nil)
