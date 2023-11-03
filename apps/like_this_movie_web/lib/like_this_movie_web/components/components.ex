@@ -6,6 +6,7 @@ defmodule LikeThisMovieWeb.Components do
       import LikeThisMovieWeb.ContentShell
       import LikeThisMovieWeb.Navigate
       import LikeThisMovieWeb.NavigateButton
+      import LikeThisMovieWeb.Movie
     end
   end
 end
