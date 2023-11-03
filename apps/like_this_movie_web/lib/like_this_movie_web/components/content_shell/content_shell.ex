@@ -8,7 +8,11 @@ defmodule LikeThisMovieWeb.ContentShell do
   def content_shell(assigns) do
     ~H"""
     <h1><%= @page_title %></h1>
-    <%= render_slot(@inner_block) %>
+    <div class="flex flex-wrap justify-center">
+      <div class="flex flex-wrap w-4/6">
+        <%= render_slot(@inner_block) %>
+      </div>
+    </div>
     """
   end
 end
