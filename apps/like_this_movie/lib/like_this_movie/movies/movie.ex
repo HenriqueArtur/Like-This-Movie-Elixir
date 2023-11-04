@@ -10,6 +10,7 @@ defmodule LikeThisMovie.Movies.Movie do
     field :original_title, :string
     field :backdrop_path, :string
     field :poster_path, :string
+    field :tmdb_id, :integer
     many_to_many(
       :likes,
       User,
@@ -23,7 +24,7 @@ defmodule LikeThisMovie.Movies.Movie do
   @doc false
   def changeset(movie, attrs) do
     movie
-    |> cast(attrs, [:title, :original_title, :backdrop_path, :poster_path])
-    |> validate_required([:title, :original_title, :backdrop_path, :poster_path])
+    |> cast(attrs, [:title, :original_title, :backdrop_path, :poster_path, :tmdb_id])
+    |> validate_required([:title, :original_title, :backdrop_path, :poster_path, :tmdb_id])
   end
 end

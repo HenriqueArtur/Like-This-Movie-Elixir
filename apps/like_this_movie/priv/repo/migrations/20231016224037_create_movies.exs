@@ -7,6 +7,7 @@ defmodule LikeThisMovie.Repo.Migrations.CreateMovies do
       add :original_title, :string
       add :backdrop_path, :string
       add :poster_path, :string
+      add :tmdb_id, :integer
 
       timestamps()
     end
