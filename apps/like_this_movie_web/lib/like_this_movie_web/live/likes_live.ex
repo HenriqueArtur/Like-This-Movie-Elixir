@@ -4,12 +4,12 @@ defmodule LikeThisMovieWeb.LikesLive do
   def render(assigns) do
     ~H"""
     <.content_shell page_title="Likes">
-      <%= for _ <- 1..10 do %>
+      <%= for {a_movie, index} <- @movies do %>
         <.movie
-          img="https://image.tmdb.org/t/p/w500/yqnNLn24shYnZ6kqGpbwuB3NJ0D.jpg"
-          movie_title="A big name, too biiiiigggggggggggg lorem saassasasasas dsdsds"
-          position="10",
-          likes="999"
+          img={"#{LikeThisMovie.TMDB.url_img_from(a_movie.poster_path)}"}
+          movie_title={a_movie.title}
+          position={index + 1},
+          likes={a_movie.likes}
           is_liked={false}
         />
       <% end %>
@@ -18,6 +18,7 @@ defmodule LikeThisMovieWeb.LikesLive do
   end
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, a_page: :page_likes)}
+    movies = LikeThisMovie.Movies.fetch_day_trend_movies
+    {:ok, assign(socket, a_page: :page_likes, movies: movies)}
   end
 end
