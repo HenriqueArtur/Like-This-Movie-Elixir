@@ -4,9 +4,12 @@ defmodule LikeThisMovieWeb.Movie do
 
   def movie(assigns) do
     ~H"""
-    <article class="w-44 rounded-lg shadow-lg ring-1 ring-gray-900/5 m-2">
+    <article id={"movie-#{@id}"} class="w-44 rounded-lg shadow-lg ring-1 ring-gray-900/5 m-2">
       <div class="relative">
-        <button class={"rounded-full absolute p-2 right-3 top-3 #{a_like_btn_class?(@is_liked)}"}>
+        <button
+          class={"rounded-full absolute p-2 right-3 top-3 #{a_like_btn_class?(@is_liked)}"}
+          phx-value-position={@position - 1}
+          phx-click="toggle-like">
           <.icon name={if @is_liked, do: "material-favorite-solid", else: "material-favorite"} />
         </button>
         <img
